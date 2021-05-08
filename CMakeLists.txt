@@ -6,7 +6,7 @@ set(CMAKE_SYSTEM_NAME Generic)
 project(Arduino_Templet C CXX ASM)
 
 SET(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 set(CLION_SVD_FILE_PATH "nrf52840.svd" CACHE FILEPATH "Peripheral Registers Definitions File" FORCE)
 
@@ -33,6 +33,14 @@ add_definitions(-DMBED_TRAP_ERRORS_ENABLED=1)
 include_directories(framework/cores/arduino)
 include_directories(framework/ARDUINO_NANO33BLE)
 include_directories(Core/inc)
+include_directories(libraries/Arduino_HTS221)
+include_directories(libraries/Arduino_LPS22HB)
+include_directories(libraries/Arduino_APDS9960)
+include_directories(libraries/Wire)
+include_directories(libraries/SPI)
+include_directories(libraries/Adafruit_Zero_DMA_Library)
+include_directories(libraries/Adafruit_Zero_PDM_Library)
+include_directories(libraries/PDM)
 
 include_directories(framework/cores/arduino/mbed/targets/TARGET_NORDIC/TARGET_NRF5x/TARGET_SDK_15_0/modules/softdevice/common)
 include_directories(framework/cores/arduino/mbed/targets/TARGET_NORDIC/TARGET_NRF5x/TARGET_SDK_15_0/modules/softdevice)
@@ -517,7 +525,7 @@ add_definitions(-DARDUINO_ARCH_MBED)
 #include_directories("$ENV{HOME}/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include")
 #include_directories("$ENV{HOME}/.platformio/packages/tool-unity")
 
-file(GLOB_RECURSE SOURCES "Core/*.*" "framework/*.*")
+file(GLOB_RECURSE SOURCES "Core/*.*" "framework/*.*" "libraries/*.*")
 
 link_libraries(${CMAKE_SOURCE_DIR}/framework/ARDUINO_NANO33BLE/libs/libcc_310_core.a)
 link_libraries(${CMAKE_SOURCE_DIR}/framework/ARDUINO_NANO33BLE/libs/libcc_310_ext.a)

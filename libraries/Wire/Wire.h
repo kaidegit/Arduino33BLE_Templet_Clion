@@ -20,7 +20,7 @@
 
 #include "Arduino.h"
 #include "api/HardwareI2C.h"
-#include "Print.h"
+#include "print.h"
 #include "drivers/I2C.h"
 #include "drivers/I2CSlave.h"
 #include "rtos.h"

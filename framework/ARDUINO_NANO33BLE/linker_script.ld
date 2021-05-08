@@ -69,6 +69,7 @@ SECTIONS
     } > FLASH
     __exidx_end = .;
     __etext = .;
+
     .data : AT (__etext)
     {
         __data_start__ = .;
@@ -96,13 +97,16 @@ SECTIONS
         . = ALIGN(8);
         __data_end__ = .;
     } > RAM
+
     __edata = .;
+
     .nvictable (NOLOAD) :
     {
       PROVIDE(__start_nvictable = .);
       KEEP(*(.nvictable))
       PROVIDE(__stop_nvictable = .);
     } > RAM_NVIC
+
     .crash_data_ram :
     {
       . = ALIGN(8);
@@ -114,12 +118,14 @@ SECTIONS
       . = ALIGN(8);
       __CRASH_DATA_RAM_END__ = .;
     } > RAM_CRASH_DATA
+
     .noinit (NOLOAD) :
     {
       PROVIDE(__start_noinit = .);
       KEEP(*(.noinit))
       PROVIDE(__stop_noinit = .);
     } > RAM
+
     .bss :
     {
         . = ALIGN(8);
@@ -129,6 +135,7 @@ SECTIONS
         . = ALIGN(8);
         __bss_end__ = .;
     } > RAM
+
     .heap (NOLOAD):
     {
         __end__ = .;
@@ -148,6 +155,7 @@ SECTIONS
         *(.stack*)
         . = ORIGIN(RAM) + LENGTH(RAM);
     } > RAM
+
     __StackTop = ORIGIN(RAM) + LENGTH(RAM);
     __StackLimit = __StackTop - 1024;
     PROVIDE(__stack = __StackTop);
